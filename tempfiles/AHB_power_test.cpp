@@ -1,0 +1,532 @@
+#include "power_test.h"
+
+using namespace std;
+
+////////////////////////////////////////////////////////////////////////////
+// IDD Tests
+////////////////////////////////////////////////////////////////////////////
+
+void PowerTest::idd0_loop(latency_list latencies, DramAddr * da)
+{
+    int tRAS = latencies.find("tRAS")->second;
+    int tRC  = latencies.find("tRC")->second;
+    // for (int i = 0 ; i < 8 ; i++)
+    // {
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::ACT));  //cycle i * 2tRC + 0
+        this->cq->insert(genWaitCMD( tRAS-1 ));
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::PRE));  //cycle i * 2tRC + tRAS
+        this->cq->insert(genWaitCMD( tRC-tRAS-1));
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::ACT));  //cycle i * 2tRC + tRC
+        this->cq->insert(genWaitCMD( tRAS-1 ));
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::PRE));  //cycle i * 2tRC + tRC + tRAS
+        this->cq->insert(genWaitCMD( tRC-tRAS-1));
+    // }
+}
+
+void PowerTest::idd1_loop(latency_list latencies,DramAddr * da)
+{
+    int tRAS = latencies.find("tRAS")->second;
+    int tRC  = latencies.find("tRC")->second;
+    int tRCD = latencies.find("tRCD")->second;
+    // for (int i = 0 ; i < 8 ; i++)
+    // {
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::ACT));  //cycle i * 2tRC + 0
+        this->cq->insert(genWaitCMD( tRCD-1 ));
+        this->cq->insert(genReadCMD(0, da->bank, AUTO_PRECHARGE::NO_AP));              //cycle i * 2tRC + tRCD
+        this->cq->insert(genWaitCMD( tRAS-tRCD-1));
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::PRE));  //cycle i * 2tRC + tRAS
+        this->cq->insert(genWaitCMD( tRC-tRAS-1));
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::ACT));  //cycle i * 2tRC + tRC
+        this->cq->insert(genWaitCMD( tRCD-1 ));
+        this->cq->insert(genReadCMD(0, da->bank, AUTO_PRECHARGE::NO_AP));              //cycle i * 2tRC + tRCD+ tRC
+        this->cq->insert(genWaitCMD( tRAS-tRCD-1 ));
+        this->cq->insert(genRowCMD(da->row, da->bank, MC_CMD::PRE));  //cycle i * 2tRC + tRC + tRAS
+        this->cq->insert(genWaitCMD( tRC-tRAS-1));
+    // }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void PowerTest::idd4r_init(int row, uint8_t pattern){
+    uint8_t pattern1 = 0xcc;
+    uint8_t pattern2 = 0x33;
+
+    for (int bank = 0 ; bank < 8 ; bank++){
+        DramAddr * da = new DramAddr(row,bank);
+        this->cq->insert(genRowCMD(row, bank, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(IDD4_COL1, bank, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(IDD4_COL2, bank, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(row, bank, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        delete da;
+    }
+    
+    this->cq->insert(genWaitCMD(100));
+
+    pattern1 = 0xbb;
+    pattern2 = 0xbb;
+
+    for (int bank = 0 ; bank < 8 ; bank++){
+        DramAddr * da = new DramAddr(row,bank);
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(68, bank, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(68, bank, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        delete da;
+    }
+}
+
+void PowerTest::ahb_init(int row, uint8_t pattern){
+    uint8_t pattern1 = 0x11;
+        this->cq->insert(genWaitCMD(10));
+        this->cq->insert(genRowCMD(20, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(10));
+        this->cq->insert(genWriteCMD(IDD4_COL1, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(25));
+        this->cq->insert(genRowCMD(20, 0, MC_CMD::PRE));
+	this->cq->insert(genWaitCMD(20));
+    pattern1 = 0x77;
+	this->cq->insert(genRowCMD(25, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(10));
+        this->cq->insert(genWriteCMD(IDD4_COL1, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(25));
+        this->cq->insert(genRowCMD(25, 0, MC_CMD::PRE));
+	this->cq->insert(genWaitCMD(20));
+}
+
+void PowerTest::idd4r_loop(int row)
+{
+    // Activate all 8 banks for the same row
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(row, bank, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(12)); //Satisfies tRCD and ensures tFAW
+    }
+    // Fill as much read request as buffer contains
+    while (this->cq->size < LOOP_SIZE + INIT_SIZE - (8 * 4) - (8 * 2) - 1 - 2){
+        for (int bank = 0 ; bank < 8 ; bank++){
+            this->cq->insert(genReadCMD(IDD4_COL1, bank, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD(3));
+            this->cq->insert(genReadCMD(IDD4_COL2, bank, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD(3));
+        }
+    }
+
+    // Precharge all banks at the end of the loop
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(row, bank, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(12)); //Satisfies tRCD and ensures tFAW
+    }
+}
+
+void PowerTest::idd4w_loop(int row, uint8_t pattern)
+{
+    uint8_t pattern1 = 0x00;
+    uint8_t pattern2 = pattern;
+
+    // Activate all 8 banks for the same row
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(row, bank, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(12)); //Satisfies tRCD and ensures tFAW
+    }
+
+    // Fill as much write request as buffer contains
+    while (this->cq->size < LOOP_SIZE + INIT_SIZE - (8 * 4) - (8 * 2) - 1 - 2){
+        for (int bank = 0 ; bank < 8 ; bank++){
+            this->cq->insert(genWriteCMD(IDD4_COL1, bank, pattern1, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD(3));
+            this->cq->insert(genWriteCMD(IDD4_COL2, bank, pattern2, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD(3));
+        }
+    }
+
+    // Precharge all banks at the end of the loop
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(row, bank, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(12)); //Satisfies tRCD and ensures tFAW
+    }
+}
+
+void PowerTest::act_rdn_pre (DramAddr * a, uint num_reads){
+    // max # of cols in a loop: 1536 > 4 + max_num_reads * 2 + 1 => max_num_reads = 764
+    uint max_num_reads = (LOOP_SIZE - 5) / 2 - 1;
+    if (num_reads > max_num_reads) {
+        cout << num_reads << " reads cannot be fit into loop!" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    std::ofstream myfile ("./trace_out/back2backreads_"+to_string(num_reads)+".trace");
+    int clk = 0;
+    bool dump = this->sandbox && myfile.is_open();
+    uint i= 0, step = 0;
+    this->cq->insert(genRowCMD(a->row, a->bank, MC_CMD::ACT));
+    this->cq->insert(genWaitCMD(DEF_TRCD-1));
+    if (dump){
+      myfile << hex << clk << ",ACT," << a->bank << "," << a->row << "\n";
+    }
+    clk += DEF_TRCD;
+    // if num_reads is zero, wait for tRAS(14)
+    // if num_reads is one, wait tRCD(5) + 4 +5
+    if (num_reads > 0 ){
+        // uint NUM_CACHELINES = NUM_COLS/COLS_PER_CACHELINE;
+        step = NUM_CACHELINES / num_reads;
+        if (step < 1)
+            step = 1;
+        for (i = 0; i < num_reads ; i++){
+            int cl_index = (i*step + NUM_CACHELINES/2) % NUM_CACHELINES;
+            int col = cl_index*COLS_PER_CACHELINE;
+            this->cq->insert(genReadCMD(col, a->bank, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD(DEF_TCL));
+            if (dump){
+              myfile << hex << clk << ",RD," << a->bank << "," << cl_index << "\n";
+            }
+            clk += DEF_TCL+1;
+        }
+    }
+    if (clk < DEF_TRAS)
+        this->cq->insert(genWaitCMD(DEF_TRAS - clk));
+    this->cq->insert(genRowCMD(a->row, a->bank, MC_CMD::PRE));
+    this->cq->insert(genWaitCMD(DEF_TRP-1));
+    if (dump){
+      myfile << hex << clk << ",PRE," << a->bank << "\n";
+    }
+    // clk += DEF_TRP;
+
+    cout << "The loop contains " << i << " read instructions as a stride of " << step << "-col steps." << endl;
+}
+
+void PowerTest::act_wrn_pre (DramAddr * a, uint num_wrs, uint8_t pattern){
+    // max # of cols in a loop: 1536 > 4 + max_num_ops * 2 + 1 + 1 => max_num_ops = 764
+    uint max_num_ops = (LOOP_SIZE - 5) / 2 - 1;
+    if (num_wrs > max_num_ops) {
+        cout << num_wrs << " operations cannot be fit into loop!" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    uint i= 0, step = 0;
+    this->act(a);
+    if (num_wrs > 0 ){
+        // uint NUM_CACHELINES = NUM_COLS/COLS_PER_CACHELINE;
+        step = NUM_CACHELINES / num_wrs;
+        if (step < 1)
+            step = 1;
+        cout << "Cols to write: ";
+        for (i = 0; i < num_wrs ; i++){
+            int cl_index = (i*step + NUM_CACHELINES/2) % NUM_CACHELINES;
+            int col = cl_index*COLS_PER_CACHELINE;
+            this->cq->insert(genWriteCMD(col,a->bank,pattern, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD(3));
+            cout << col << " ";
+        }
+        cout << endl;
+    }
+    this->pre(a);
+
+    cout << "The loop contains " << i << " write instructions as a stride of " << step << "-col steps." << endl;
+}
+
+void PowerTest::act_rdn_pre_fix_time(DramAddr * a, uint num_reads){
+    // max # of cols in a loop: 1536 > 4 + max_num_reads * 3 + 1 => max_num_reads = 510
+    uint max_num_reads = (LOOP_SIZE - 5) / 3;
+    uint max_period = max_num_reads * DEF_TCL;
+    if (num_reads > max_num_reads)
+        num_reads = max_num_reads;
+
+    uint i= 0, step = 0, latency_per_read = 0;
+
+    std::ofstream myfile ("./trace_out/fixedtimereads_"+to_string(num_reads)+".trace");
+    bool dump_trace = false;
+    if (this->sandbox) dump_trace = myfile.is_open();
+    int clk = 0;
+
+    this->cq->insert(genRowCMD(a->row, a->bank, MC_CMD::ACT));
+    this->cq->insert(genWaitCMD(DEF_TRCD-1));
+    if (dump_trace){
+      myfile << hex << clk << ",ACT," << a->bank << "," << a->row << "\n";
+    }
+    clk += DEF_TRCD;
+
+    if (num_reads > 0 ){
+        latency_per_read = max_period/num_reads;
+        step = NUM_CACHELINES / num_reads;
+        if (step == 0)
+            step = 1;
+
+        for (i = 0; i < num_reads ; i++){
+            int col = (i * step) % NUM_CACHELINES;
+            this->wait_for(latency_per_read/2);
+            clk += latency_per_read/2;
+            this->cq->insert(genReadCMD(col, a->bank, AUTO_PRECHARGE::NO_AP));
+            if (dump_trace) myfile << hex << clk << ",RD," << a->bank << "," << col << "\n";
+            this->wait_for(latency_per_read/2 - 1);
+            clk += latency_per_read/2;
+        }
+    }
+    if (clk < max_period + DEF_TRCD) {
+        int gap = max_period + DEF_TRCD - clk;
+        this->wait_for(gap);
+        clk += gap;
+    }
+    this->cq->insert(genRowCMD(a->row, a->bank, MC_CMD::PRE));
+    myfile << hex << clk << ",PRE," << a->bank << "\n";
+    this->cq->insert(genWaitCMD(DEF_TRP-1));
+    // clk += DEF_TRP
+
+    cout << "The loop contains " << i << " read instructions as a stride of " << step << "-col steps." << endl;
+    cout << "    latency between reads: " << latency_per_read << "  T=" << max_period << endl;
+}
+
+void PowerTest::act_wrn_pre_fix_time(DramAddr * a, uint num_wrs, uint8_t pattern){
+    // max # of cols in a loop: 1536 > 4 + max_num_wrs * 3 + 1 => max_num_wrs = 510
+    uint max_num_wrs = (LOOP_SIZE - 5) / 3;
+    uint max_period = max_num_wrs * 3;
+    if (num_wrs > max_num_wrs)
+        num_wrs = max_num_wrs;
+
+    uint i= 0, step = 0, latency_per_read = 0;
+    this->cq->insert(genWaitCMD(1));
+    this->cq->insert(genWaitCMD(1));
+    this->cq->insert(genWaitCMD(1));
+    this->cq->insert(genRowCMD(a->row, a->bank, MC_CMD::ACT));
+    this->turn_bus(BUSDIR::WRITE);
+    if (num_wrs > 0 ){
+        latency_per_read = max_period/num_wrs;
+        step = NUM_CACHELINES / num_wrs;
+        if (step == 0)
+            step = 1;
+
+        for (i = 0; i < num_wrs ; i++){
+            int col = (i * step) % NUM_CACHELINES;
+            this->wait_for(latency_per_read/2);
+            this->cq->insert(genWriteCMD(col, a->bank, pattern, AUTO_PRECHARGE::NO_AP));
+            this->wait_for(latency_per_read/2 - 1);
+        }
+    }
+    else {
+        this->wait_for(max_period);
+    }
+    this->cq->insert(genRowCMD(a->row, a->bank, MC_CMD::PRE));
+    this->turn_bus(BUSDIR::READ);
+
+    cout << "The loop contains " << i << " write instructions as a stride of " << step << "-col steps." << endl;
+    cout << "    latency between writes: " << latency_per_read << "  T=" << max_period << endl;
+}
+
+void PowerTest::col_init(int bank, int row, int column, uint8_t pattern){
+  uint8_t pattern0 = 0x00;
+  this->cq->insert(genRowCMD(row, bank, MC_CMD::ACT));
+  this->cq->insert(genWaitCMD(DEF_TRCD-1));
+
+  for (int col = 0; col < 128; col++){
+    this->cq->insert(genWriteCMD(col, bank, pattern0, AUTO_PRECHARGE::NO_AP));
+    // sets all of the cols to 0x00
+    this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+  }
+
+  this->cq->insert(genWriteCMD(column, bank, pattern, AUTO_PRECHARGE::NO_AP));
+  this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+
+  this->cq->insert(genRowCMD(row, bank, MC_CMD::PRE));
+  this->cq->insert(genWaitCMD(DEF_TRP-1));
+}
+
+void PowerTest::col_loop(int bank, int row, int column, uint8_t pattern){
+  this->cq->insert(genRowCMD(row, bank, MC_CMD::ACT));
+  this->cq->insert(genWaitCMD(DEF_TRCD-1));
+
+  for (int iter = 0; iter < 765; iter++){
+    this->cq->insert(genReadCMD(column, bank, AUTO_PRECHARGE::NO_AP));
+    this->cq->insert(genWaitCMD(3));
+  }
+
+  this->cq->insert(genRowCMD(row, bank, MC_CMD::PRE));
+  this->cq->insert(genWaitCMD(DEF_TRCD-1));
+}
+
+// IDD VALUES as defined in Micron Datasheet
+void PowerTest::idd0_datasheet_loop(latency_list latencies){
+    uint r0 = 0x0000, r1 = 0x0078;
+    int tRAS = latencies.find("tRAS")->second;
+    int tRC  = latencies.find("tRC")->second;
+
+    while(this->cq->size < LOOP_SIZE - INIT_SIZE - 3 - 8){
+        for (int bank = 0 ; bank <= 7 ; bank++){
+            this->cq->insert(genRowCMD(r0, bank, MC_CMD::ACT));
+            this->cq->insert(genWaitCMD( tRAS-1 ));
+            this->cq->insert(genRowCMD(r0, bank, MC_CMD::PRE));
+            this->cq->insert(genWaitCMD( tRC - tRAS-1 ));
+
+            this->cq->insert(genRowCMD(r1, bank, MC_CMD::ACT));
+            this->cq->insert(genWaitCMD( tRAS-1 ));
+            this->cq->insert(genRowCMD(r1, bank, MC_CMD::PRE));
+            this->cq->insert(genWaitCMD( tRC - tRAS-1 ));
+        }
+    }
+}
+
+void PowerTest::idd1_datasheet_loop(latency_list latencies){
+    uint r0 = 0x0000, r1 = 0x0078;
+    int tRAS = latencies.find("tRAS")->second;
+    int tRCD = latencies.find("tRCD")->second;
+    int tRC  = latencies.find("tRC")->second;
+
+    while(this->cq->size < LOOP_SIZE - INIT_SIZE - 3 - 8){
+        for (int bank = 0 ; bank <= 7 ; bank++){
+            this->cq->insert(genRowCMD(r0, bank, MC_CMD::ACT));
+            this->cq->insert(genWaitCMD( tRCD-1 ));
+            this->cq->insert(genReadCMD(0, bank, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD( tRAS-tRCD-1));
+            this->cq->insert(genRowCMD(r0, bank, MC_CMD::PRE));
+            this->cq->insert(genWaitCMD( tRC-tRAS-1 ));
+
+            this->cq->insert(genRowCMD(r1, bank, MC_CMD::ACT));
+            this->cq->insert(genWaitCMD( tRCD-1 ));
+            this->cq->insert(genReadCMD(0, bank, AUTO_PRECHARGE::NO_AP));
+            this->cq->insert(genWaitCMD( tRAS-tRCD-1));
+            this->cq->insert(genRowCMD(r1, bank, MC_CMD::PRE));
+            this->cq->insert(genWaitCMD( tRC-tRAS-1 ));
+        }
+    }
+}
+
+void PowerTest::idd2n_datasheet_loop(){
+    while(this->cq->size < LOOP_SIZE + INIT_SIZE - 2){
+        this->cq->insert(genWaitCMD(1023));
+    }
+}
+
+void PowerTest::idd3n_datasheet_loop(){
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(12));
+    }
+    while(this->cq->size < LOOP_SIZE + INIT_SIZE - 8*2 - 2){
+        this->cq->insert(genWaitCMD(1023));
+    }
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(12));
+    }
+}
+
+void PowerTest::idd2p_loop(){
+    while (this->cq->size < LOOP_SIZE + INIT_SIZE - 9){
+        this->cq->insert(genPowerDownCMD(0));
+    }
+}
+
+void PowerTest::idd2q_loop(){
+    while (this->cq->size < LOOP_SIZE + INIT_SIZE - 9){
+        this->cq->insert(genPowerDownCMD(1));
+    }
+}
+void PowerTest::idd3p_loop(){
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(12));
+    }
+    while (this->cq->size < LOOP_SIZE + INIT_SIZE - 22){
+        this->cq->insert(genPowerDownCMD(0));
+    }
+    this->cq->insert(genPowerDownCMD(1));
+    for (int bank = 0 ; bank < 8 ; bank++){
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(12));
+    }
+    this->cq->insert(genWaitCMD(DEF_TRP-1));
+
+}
+
+void PowerTest::idd5b_init(){
+    this->cq->insert(genRefConfigCMD(1560, MC_CMD::SET_TREFI));
+    std::cout << "You need to set tRFC and tREFI according to the datasheet."<<std::endl;
+    std::cout << "WE should be high, but auto refresh sets it to low. So don't use this for power measurement." << std::endl;
+    exit(EXIT_FAILURE);
+}
+void PowerTest::idd5b_stop(){
+    this->cq->insert(genRefConfigCMD(0, MC_CMD::SET_TREFI));
+}
+
+void PowerTest::idd5b_loop(uint tRFC){
+    while (this->cq->size < LOOP_SIZE + INIT_SIZE - 2 - 3){
+       this->cq->insert(genRefCMD());
+        this->cq->insert(genWaitCMD(tRFC - 1));
+    }
+}
+
+void PowerTest::idd6_loop(){
+    std::cout << "idd6_loop is not implemented yet! Please write the loop first." << std::endl;
+    exit(EXIT_FAILURE);
+}
+void PowerTest::idd6et_loop(){
+    std::cout << "idd6et_loop is not implemented yet! Please write the loop first." << std::endl;
+    exit(EXIT_FAILURE);
+}
+
+void PowerTest::idd7_init(){
+    for (int bank = 0; bank < 8; bank++){
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0x0, bank, 0x00, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0xF, bank, 0x33, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, bank, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+    }
+}
+
+void PowerTest::idd7_loop(){
+    int tRRD = 5;
+    int tFAW = 35;
+    while(this->cq->size < LOOP_SIZE + INIT_SIZE - 4*8 - 4*8 - 1){
+        for (int bank = 0; bank < 8; bank++){
+            int col;
+            if (bank % 2 == 0) col = 0;
+            else col = 0xF;
+            this->cq->insert(genRowCMD(0, 0, MC_CMD::ACT));
+            this->cq->insert(genReadCMD(col, 0, AUTO_PRECHARGE::AP));
+            this->cq->insert(genWaitCMD(tRRD - 3));
+            if (bank == 3) {
+                this->cq->insert(genWaitCMD(1));
+            }
+        }
+        for (int bank = 0; bank < 8; bank++){
+            int col;
+            if (bank % 2 == 0) col = 0xF;
+            else col = 0;
+            this->cq->insert(genRowCMD(0, 0, MC_CMD::ACT));
+            this->cq->insert(genReadCMD(col, 0, AUTO_PRECHARGE::AP));
+            this->cq->insert(genWaitCMD(tRRD - 3));
+            if (bank == 3) {
+                this->cq->insert(genWaitCMD(1));
+            }
+        }
+        this->cq->insert(genWaitCMD(tFAW));
+    }
+}
+
+void PowerTest::idd8_loop(){
+    std::cout << "idd8_loop is not implemented yet! Please write the loop first." << std::endl;
+    exit(EXIT_FAILURE);
+}
+
+void PowerTest::sumitfcfs_loop(){
+
+}
+
+void PowerTest::sumitfrfcfs_loop(){
+
+}
+
+void PowerTest::sumitahb_loop(){
+
+}
+
+void PowerTest::sumitfrfcfspriorhit_loop(){
+
+}

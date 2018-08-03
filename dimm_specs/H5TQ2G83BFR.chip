@@ -1,0 +1,7 @@
+#datasheet:https://www.skhynix.com/eolproducts.view.do?pronm=DDR3+SDRAM&srnm=H5TQ2G83BFR&rk=19&rc=consumer
+tRFC,64,nCK
+tRCD,13.5,ns
+tRP,13.5,ns
+tRC,49.5,ns
+tRAS,36,ns
+tCL,9,nCK

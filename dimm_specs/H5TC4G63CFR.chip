@@ -1,0 +1,7 @@
+# Datasheet,http://www.datasheets360.com/pdf/-38044618211721448
+tRFC,104,nCK
+tRCD,13.125,ns
+tRP,13.125,ns
+tRC,50.6,ns
+tRAS,37.5,ns
+tCL,13.125,ns

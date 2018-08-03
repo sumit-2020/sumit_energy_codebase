@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/kevincha/local/local/kevincha/safari/writeups/ParRef/camera-hpca2014/sec'
+let g:netrw_dirhist_2='/home/kevincha/local/local/kevincha/safari/writeups/ParRef/camera-hpca2014'
+let g:netrw_dirhist_3='/safari/africanswallow/kevincha/salp-sim/sims/LISA_HPCA/row_int+closed/scurves/lisa/0820_clone_4c_new_stats'
+let g:netrw_dirhist_4='/safari/africanswallow/kevincha/salp-sim/sims/LISA_HPCA/row_int+closed/scurves/lisa'
+let g:netrw_dirhist_5='/safari/africanswallow/kevincha/salp-sim/sims/LISA_HPCA/row_int+closed/scurves/scurves_pre'

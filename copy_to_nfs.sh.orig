@@ -1,0 +1,31 @@
+#!/bin/bash
+
+RESULTS_DIR=/home/dram/riffa/dram_codebase/results/
+NFS_DIR=/nfs/synology/volt_results/
+LOG_DIR=/home/dram/
+RIGHT_NOW=`date `
+
+ls $NFS_DIR > /dev/null
+
+echo "" > open_files.tmp
+echo "" > exclude_list.tmp
+
+if [ $? -eq 0 ]; then
+    #Descend directories and find all open files
+    lsof +D $RESULTS_DIR > open_files.tmp
+    #split out only the file name and put it in a list
+    awk '{split($0,a," "); print a[9];}' open_files.tmp | tail -n +2 |\
+        rev | cut -d/ -f1 | rev > exclude_list.tmp
+    #Rsync and exclude those files
+	rsync -rlptDvz $RESULTS_DIR/ $NFS_DIR --exclude-from=exclude_list.tmp
+	echo ***********$'\n'Sync time : $RIGHT_NOW >> $LOG_DIR/copy_to_nfs.log
+	echo "***********" >> $LOG_DIR/copy_to_nfs.log
+else
+	echo "***********" >> $LOG_DIR/copy_to_nfs.log
+	echo Cannot access NFS directory : $RIGHT_NOW >> $LOG_DIR/copy_to_nfs.log
+	echo "***********" >> $LOG_DIR/copy_to_nfs.log
+	exit 1
+fi
+
+
+

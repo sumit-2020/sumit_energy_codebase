@@ -1,0 +1,36 @@
+#datasheet: http://www.samsung.com/global/business/semiconductor/file/product/135V_DDR3_4Gb_Qdie_UnbufferedSODIMM_Rev121.pdf
+param,freq,value
+idd0  , 1333, 175
+idd1  , 1333, 250
+idd2n , 1333,  75
+idd2nt, 1333, n/a
+idd2p0, 1333,  55
+idd2p1, 1333,  55
+idd2q , 1333,  75
+idd3n , 1333, 110
+idd3p , 1333,  70
+idd4r , 1333, 465
+idd4w , 1333, 440
+idd5  , 1333, n/a
+idd5b , 1333, 570
+idd6  , 1333,  40
+idd6et, 1333, n/a
+idd7  , 1333, 675
+idd8  , 1333,  25
+idd0  , 1600, 180
+idd1  , 1600, 275
+idd2n , 1600,  80
+idd2nt, 1600, n/a
+idd2p0, 1600,  60
+idd2p1, 1600,  60
+idd2q , 1600,  80
+idd3n , 1600, 120
+idd3p , 1600,  75
+idd4r , 1600, 535
+idd4w , 1600, 500
+idd5  , 1600, n/a
+idd5b , 1600, 580
+idd6  , 1600,  40
+idd6et, 1600, n/a
+idd7  , 1600, 760
+idd8  , 1600,  25

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+mkdir $1
+mkdir $1/src
+mkdir $1/bin
+mkdir $1/out
+mkdir $1/log_out
+cp power_test/Makefile $1/Makefile
+cp power_test/src/main.cpp $1/src/main.cpp
+cp power_test/src/main.h $1/src/main.h

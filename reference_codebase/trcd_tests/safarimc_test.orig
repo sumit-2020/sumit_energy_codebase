@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <riffa.h>
+#include <cassert>
+
+#include "timer.h"
+#include "utils.h"
+#include "test_routine.h"
+
+int main(){
+    fpga_t* fpga;
+    fpga_info_list info;
+    int fid = 0; //fpga id
+    int ch = 0; //channel id
+
+    // Populate the fpga_info_list struct
+    if (fpga_list(&info) != 0) {
+        printf("Error populating fpga_info_list\n");
+        return -1;
+    }
+    printf("Number of devices: %d\n", info.num_fpgas);
+    for (int i = 0; i < info.num_fpgas; i++) {
+        printf("%d: id:%d\n", i, info.id[i]);
+        printf("%d: num_chnls:%d\n", i, info.num_chnls[i]);
+        printf("%d: name:%s\n", i, info.name[i]);
+        printf("%d: vendor id:%04X\n", i, info.vendor_id[i]);
+        printf("%d: device id:%04X\n", i, info.device_id[i]);
+    }
+
+    fpga = fpga_open(fid);
+
+    if(!fpga){
+        printf("Problem on opening the fpga \n");
+        return -1;
+    }
+    printf("The FPGA has been opened successfully! \n");
+
+    fpga_reset(fpga); //keep this
+
+    testRetention(fpga, 128);
+
+    /*uint col = 744;
+      uint row = 5383;
+      uint bank = 5;*/
+
+    uint ret_time_pre = 64;
+    //uint tras = 14;
+    uint ret_time_post = 64;
+
+    /*turnBus(fpga, BUSDIR::WRITE, nullptr);
+      writeCol(fpga, 0, 1, 0, 0xff, nullptr);
+      turnBus(fpga, BUSDIR::READ, nullptr);
+      readAndCompareCol(fpga, 0, 1, 0, 0xff, 6, nullptr);*/
+
+    /*for(uint tras = 10; tras > 0; tras--){
+      printf("tRAS: %u \n", tras);
+      fprintf(stderr, "tRAS: %u \n", tras);
+      test_tras(fpga, ret_time_pre, tras, ret_time_post);
+      }*/
+
+    /*uint* rdbuf = new uint[8];
+      uint num_recv;
+      num_recv = fpga_recv(fpga, ch, (void*)rdbuf, 8, 0);*/
+
+    /*for(uint trcd = 4; trcd > 0; trcd--){
+      printf("tRCD: %u \n", trcd);
+      fprintf(stderr, "tRCD: %u \n", trcd);
+      test_trcd(fpga, ret_time_pre, trcd);
+      }*/
+
+    printf("The test has been completed \n");
+
+    usleep(500 * 1000); // takes microseconds
+
+    fpga_close(fpga);
+    return 0;
+
+    GET_TIME_INIT(2);
+    GET_TIME_VAL(0);
+
+
+
+
+    //try to read something back (64 bytes are expected for single read burst)
+    //uint* rdbuf = new uint[8];
+    //uint num_recv;
+    /*while(1)
+      fpga_recv(fpga, ch, (void*)rdbuf, 8, 0);
+      return 0;
+
+      GET_TIME_VAL(1);
+      printf("Time elapsed: %f ms \n", TIME_VAL_TO_MS(1) - TIME_VAL_TO_MS(0));
+
+      printf("Received %d words \n", num_recv);*/
+
+    //for(int i = 0; i < 8; i++)
+    //	printf("data[%d]: %x \n", i, rdbuf[i]);
+
+    //second part
+    //num_recv = fpga_recv(fpga, ch, (void*)rdbuf, 8, 0);
+
+    //printf("Received %d words \n", num_recv);
+
+    //for(int i = 0; i < 8; i++)
+    //printf("data[%d]: %x \n", i, rdbuf[i]);
+
+    fpga_close(fpga);
+    return 0;
+
+}

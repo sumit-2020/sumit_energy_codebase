@@ -1,0 +1,9 @@
+# Datasheet,http://www.samsung.com/semiconductor/global/file/product/ds_k4b4g1646b_rev10-1.pdf
+tRFC,120,nCK
+tAA,15,ns
+tRCD,15,ns
+tRP,15,ns
+tRC,52.5,ns
+tRAS,37.5,ns
+tCL,6,nCK
+tCWL,5,nCK

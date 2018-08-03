@@ -1,0 +1,70 @@
+#datasheet: https://www.skhynix.com/product/filedata/fileDownload.do?seq=3848
+param,freq,value
+idd0  , 1333, 136
+idd1  , 1333, 172
+idd2n , 1333,  56
+idd2nt, 1333,  68
+idd2p0, 1333,  40
+idd2p1, 1333,  40
+idd2q , 1333,  52
+idd3n , 1333, 120
+idd3p , 1333,  88
+idd4r , 1333, 428
+idd4w , 1333, 440
+idd5  , 1333, n/a
+idd5b , 1333, 520
+idd6  , 1333,  40
+idd6et, 1333,  52
+idd7  , 1333, 700
+idd8  , 1333, n/a
+idd0  , 1600, 140
+idd1  , 1600, 176
+idd2n , 1600,  60
+idd2nt, 1600,  76
+idd2p0, 1600,  40
+idd2p1, 1600,  40
+idd2q , 1600,  56
+idd3n , 1600, 124
+idd3p , 1600,  88
+idd4r , 1600, 500
+idd4w , 1600, 488
+idd5  , 1600, n/a
+idd5b , 1600, 520
+idd6  , 1600,  40
+idd6et, 1600,  52
+idd7  , 1600, 720
+idd8  , 1600, n/a
+idd0  , 1866, 152
+idd1  , 1866, 188
+idd2n , 1866,  68
+idd2nt, 1866,  92
+idd2p0, 1866,  44
+idd2p1, 1866,  44
+idd2q , 1866,  64
+idd3n , 1866, 136
+idd3p , 1866,  92
+idd4r , 1866, 568
+idd4w , 1866, 568
+idd5  , 1866, n/a
+idd5b , 1866, 540
+idd6  , 1866,  48
+idd6et, 1866,  80
+idd7  , 1866, 740
+idd8  , 1866, n/a
+idd0  , 1066, 136
+idd1  , 1066, 168
+idd2n , 1066,  52
+idd2nt, 1066,  64
+idd2p0, 1066,  40
+idd2p1, 1066,  40
+idd2q , 1066,  52
+idd3n , 1066, 112
+idd3p , 1066,  84
+idd4r , 1066, 368
+idd4w , 1066, 380
+idd5  , 1066, n/a
+idd5b , 1066, 520
+idd6  , 1066,  40
+idd6et, 1066,  52
+idd7  , 1066, 620
+idd8  , 1066, n/a

@@ -1,0 +1,1094 @@
+Number of devices: 1
+0: id:0
+0: num_chnls:1
+0: name:0000:01:00.00
+0: vendor id:10EE
+0: device id:6018
+The FPGA has been opened successfully! 
+Pattern 0xff_0
+tRAS: 15 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 14 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 13 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 12 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 11 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.25[0m
+tRAS: 10 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 9 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 8 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 7 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 6 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 5 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 4 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 3 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 2 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 1 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Pattern 0x0_ff
+tRAS: 15 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 14 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 13 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 12 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 11 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 10 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 9 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 8 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 7 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 6 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 5 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 4 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 3 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 2 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 1 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.5[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Pattern 0xcc_55
+tRAS: 15 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 14 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 13 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 12 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 11 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 10 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 9 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 8 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 7 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 6 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 5 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 4 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 3 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 0.25[0m
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 2 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 1 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Pattern 0xaa_33
+tRAS: 15 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 14 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 13 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 12 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 11 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 10 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 9 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 8 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 7 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 6 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 5 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 4 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 3 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 2 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+tRAS: 1 
+Testing bank0
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+[31mBank Error $lines %: 1[0m
+Testing bank1
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank2
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank3
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank4
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank5
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank6
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+Testing bank7
+Testing Row: 0Testing Row: 1Testing Row: 2Testing Row: 3
+The test has been completed 

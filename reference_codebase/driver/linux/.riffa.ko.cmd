@@ -1,0 +1,1 @@
+cmd_/home/dram/riffa/driver/linux/riffa.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.13.0-66-generic/scripts/module-common.lds --build-id  -o /home/dram/riffa/driver/linux/riffa.ko /home/dram/riffa/driver/linux/riffa.o /home/dram/riffa/driver/linux/riffa.mod.o

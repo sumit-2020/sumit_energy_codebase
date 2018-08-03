@@ -1,0 +1,220 @@
+" --------------------------------------
+" Pathogen
+" --------------------------------------
+execute pathogen#infect()
+filetype plugin indent on
+
+:syntax enable
+:syntax on
+:filetype indent on
+:set cindent shiftwidth=4
+:set nocompatible
+:set number
+:nmap <silent> <C-N> :silent noh<CR>
+:set ignorecase
+:set smartcase
+:set incsearch
+":set tags=./tags,~/code/tags,/usr/src/tags,/usr/include/tags
+:set tags=tags;/
+:set backspace=indent,start,eol
+:set statusline=%F%m%r%h%w\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+:set laststatus=2
+
+" Color Setup
+set t_Co=256
+let g:elflord_thin_termcolors=256
+"colorscheme solarized
+"colorscheme jellybeans
+"colorscheme zenburn
+"colorscheme elflord_thin
+colorscheme hemisu
+"set background=dark
+
+" Adjust color based on the time of the day
+let g:daylight_morning_color_term = "solarized"
+let g:daylight_afternoon_color_term = "solarized"
+let g:daylight_evening_color_term = "solarized"
+let g:daylight_late_color_term = "solarized"
+"let g:daylight_late_color_term = "hemisu_dark"
+
+let g:daylight_late_hour = 22
+let g:daylight_morning_hour = 6
+let g:daylight_afternoon_hour = 12
+let g:daylight_evening_hour = 18
+
+" Highlight Column
+:set colorcolumn=80
+:hi ColorColumn ctermbg=DarkGrey
+
+" Highlight search results
+set hlsearch
+
+" Y copies from cursor to EOL
+noremap Y y$
+
+" Toggle at word boundary
+:set lbr
+:imap jj <Esc>:wall<CR>
+:map <Space> :wall<CR>
+
+" Setup the tabbing pref
+:set tabstop=4
+:set expandtab
+
+" Setup auto-completing curly brackets
+":inoremap {	 {}<Left>
+:inoremap {<CR>  {<CR>}<Esc>O
+":inoremap {{	 {
+:inoremap {}	 {}
+
+" Setup auto-completing quotes
+":inoremap "	 ""<Left>
+:inoremap "<CR>  "<CR>"<Esc>O
+:inoremap ""	 "
+
+:map <C-j> <C-e>
+:map <C-k> <C-y>
+
+:map <C-l> $
+:map <C-h> ^
+
+" Setup auto-completing for C-style comments
+:inoremap /*	/*  */<Left><Left><Left>
+:inoremap /**	/**<CR><Left>*/<Esc>O<Left>* @brief
+
+"shortcut switching windows
+:nmap <c-h> <c-w>h<c-w><Bar>
+:nmap <c-l> <c-w>l<c-w><Bar>
+
+" Strip trailing whitespace on save
+fun! <SID>StripTrailingWhitespace()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
+
+" Replace selected word in visual mode - By pressing ctrl + r in the visual
+" mode you will be prompted to enter text to replace with. Press enter and
+" then confirm each change you agree with 'y' or decline with 'n'.
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" 'backspace' eats up: indent, eol, and start-of-insert
+set backspace=indent,eol,start
+
+" keys that wrap lines: 'backspace', 'space', 'left', 'right', 'h', 'l'
+set whichwrap=b,s,<,>,h,l
+
+" gq: join sentences with just a single space
+set nojoinspaces
+
+"" Note -- enabling vim-mouse allows you to:
+"" 1. click-navigate to any location in a window
+"" 2. click-navigate to any location in a different window
+"" 3. drag-select within a window
+"" 4. drag-adjust window partitions
+"" 5. fall-back to xterm-cursor by using 'shift'
+"
+"" Note -- enabling vim-mouse prevents you from:
+"" 1. right-click copy/paste (requires xterm-cursor)
+"
+"" enable vim-mouse
+"set mouse=a
+"
+
+" move up/down by one row in a soft-wrapped multirow line
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Function key map
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+":map <F2> :set cindent shiftwidth=4<Bar>:set tabstop=4<cr>
+
+" Enable pasting code in terminal without auto indentation:
+" 1. Start insert mode.
+" 2. Press F2 (toggles the 'paste' option on).
+" 3. Use your terminal to paste text from the clipboard.
+" 4. Press F2 (toggles the 'paste' option off).
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+:map <F3> :set nohlsearch<cr>
+:map <F4> :set nocindent<cr>
+" remove trailing white spaces
+:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+:map <F6> :setlocal spell! spelllang=en_us<cr>
+:map <F7> :set textwidth=78<cr>
+:map <F8> :set textwidth=0<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Language-specific settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" C
+autocmd FileType c
+  \ setlocal tabstop=4 softtabstop=4 shiftwidth=4
+
+" CPP
+autocmd FileType cpp
+  \ setlocal tabstop=4 softtabstop=4 shiftwidth=4
+
+" LaTeX
+" Latex Suite plugin stuff
+filetype plugin on
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+autocmd FileType tex
+  \ setlocal nocindent autoindent nosmartindent
+  \ spell spelllang=en_us
+  \ textwidth=80
+  \ fo+=t fo+=2
+
+" Python
+autocmd FileType python
+  \ setlocal nocindent autoindent nosmartindent
+  \ tabstop=4 softtabstop=4 shiftwidth=4
+  \ textwidth=79 " based on PEP8 specifications
+  \ fo+=t
+
+" Plain text
+autocmd BufRead,BufNewFile *.txt
+  \ setlocal nocindent smartindent
+  \ spell spelllang=en_us
+  \ textwidth=80
+  \ fo+=t fo+=2
+  "\ fo+=t fo+=a fo+=2
+  "\ setlocal nocindent autoindent nosmartindent
+
+" Verilog
+autocmd BufRead,BufNewFile *.v
+  \ setlocal nocindent smartindent
+  \ tabstop=2 softtabstop=2 shiftwidth=2
+  \ fo+=t fo+=2
+  "\ fo+=t fo+=a fo+=2
+  "\ setlocal nocindent autoindent nosmartindent
+
+"===== Auto-Completion & Wildcard-Expansion =====
+
+" auto-completetion: don't search included files
+set complete-=i
+
+" wildcard-expansion: show matches for commands/files
+set wildmenu
+
+" wildcard-expansion: exclude certain files
+set wildignore=*.o,*.pyc,*.aux,*.bbl,*.blg,*.fdb_latexmk,*.fls
+
+"===== YANK GLOBAL
+" $ "xy // x is a register where the lines are copied to
+" $ "+y
+
+" Replace word
+" ciw // whole word under the cursor
+" cw // word from the current position of the cursor
+" R // insert mode
+" C // delete the rest of the line

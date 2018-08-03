@@ -1,0 +1,9 @@
+# datasheet,http://www.samsung.com/global/business/semiconductor/file/2011/product/2011/8/29/729200ds_k4b2gxx46d_rev113.pdf
+tRFC,140,nCK
+tAA,13.91,ns
+tRCD,13.91,ns
+tRP,13.91,ns
+tRC,47.91,ns
+tRAS,34,ns
+tCL,5,nCK
+tCWL,5,nCK

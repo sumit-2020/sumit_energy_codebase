@@ -1,0 +1,2 @@
+convert $1 -strokewidth 0 -fill "rgba(255,0,0,1)" -draw "circle 917,492 955,492" $1;
+ssocr -d 6 -t 95 crop 50 120 1850 450 g_threshold invert dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation erosion erosion erosion erosion erosion erosion erosion erosion erosion erosion erosion erosion $1

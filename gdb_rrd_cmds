@@ -1,0 +1,1 @@
+run -t  $CURR_TEST -m  $TEMPERATURE  -d  $DIMM -v  $VOLTAGE --nrow 32768

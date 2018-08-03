@@ -1,0 +1,36 @@
+#datasheet: https://www.micron.com/~/media/documents/products/data-sheet/modules/sodimm/ktf4c128_256x64hz.pdf
+param,freq,value
+idd0  , 1600, 264
+idd1  , 1600, 348
+idd2n , 1600, 128
+idd2nt, 1600, 168
+idd2p0, 1600,  72
+idd2p1, 1600, 128
+idd2q , 1600, 128
+idd3n , 1600, 188
+idd3p , 1600, 152
+idd4r , 1600, 940
+idd4w , 1600, 684
+idd5  , 1600, n/a
+idd5b , 1600, 940
+idd6  , 1600,  80
+idd6et, 1600, 100
+idd7  , 1600, 972
+idd8  , 1600,  80
+idd0  , 1866, 292
+idd1  , 1866, 364
+idd2n , 1866, 140
+idd2nt, 1866, 180
+idd2p0, 1866,  72
+idd2p1, 1866, 148
+idd2q , 1866, 140
+idd3n , 1866, 196
+idd3p , 1866, 164
+idd4r , 1866,1008
+idd4w , 1866, 760
+idd5  , 1866, n/a
+idd5b , 1866, 968
+idd6  , 1866,  80
+idd6et, 1866, 100
+idd7  , 1866,1096
+idd8  , 1866,  80

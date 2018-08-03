@@ -1,0 +1,1 @@
+bin/safari_mc_test --vdd 1.25 -c --nrow 123 --ncol 456 --test trcd --dimm asdffdsa --wait 12 --patt '0xff 0xcc 0x33' --start 4 --end 2 --outdir results2

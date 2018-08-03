@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#while (true)
+#do
+    streamer -r 400 -f jpeg -s 1920x1080 -q -t 1 -o img_out/image_test.jpeg > ./img_out/streamer.log
+    convert ./img_out/image_test.jpeg -strokewidth 0 -fill "rgba(255,0,0,1)" -draw "circle 915,490 895,490" ./img_out/image_test.jpeg
+    #convert ./img_out/image_test.jpeg -strokewidth 0 -fill "rgba(255,0,0,1)" -draw "line 915,510 915,470" ./img_out/image_test.jpeg
+    #convert ./img_out/image_test.jpeg -strokewidth 0 -fill "rgba(255,0,0,1)" -draw "line 895,490 935,490" ./img_out/image_test.jpeg
+    #convert ./img_out/image_test.jpeg -strokewidth 0 -fill "rgba(255,0,0,1)" -draw "line 955,510 955,400" ./img_out/image_test.jpeg
+    #convert ./img_out/image_test.jpeg -strokewidth 0 -fill "rgba(255,0,0,1)" -draw "line 955,510 885,510" ./img_out/image_test.jpeg
+    ssocr -d 6 -o ./img_out/out_test.jpeg -t 95 crop 50 120 1850 450 g_threshold invert dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation ./img_out/image_test.jpeg
+#done

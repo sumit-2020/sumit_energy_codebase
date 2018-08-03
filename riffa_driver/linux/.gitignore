@@ -1,0 +1,9 @@
+.circ_queue.o.cmd
+.riffa.ko.cmd
+.riffa.mod.o.cmd
+.riffa.o.cmd
+.riffa_driver.o.cmd
+Module.symvers
+modules.order
+riffa.ko
+riffa.mod.c

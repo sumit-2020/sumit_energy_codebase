@@ -1,0 +1,8 @@
+Datasheet,https://images-na.ssl-images-amazon.com/images/I/41E4ME11ZYL.jpg
+tAA,15,ns
+tRCD,15,ns
+tRP,15,ns
+tRC,52.5,ns
+tRAS,37.5,ns
+tCL,6,nCK
+tCWL,5,nCK

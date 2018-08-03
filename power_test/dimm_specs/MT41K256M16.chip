@@ -1,0 +1,8 @@
+Datasheet,http://www.datasheetarchive.com/dlmain/4431273261996b523ecaaed62c5e044a3a1f49/M/MT41K256M16HA-107%3AE
+tRFC,150,ns
+tRCD,15,ns
+tRP,15,ns
+tRC,52.5,ns
+tRAS,37.5,ns
+tCL,6,nCK
+tCWL,5,nCK

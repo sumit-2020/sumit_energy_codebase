@@ -1,0 +1,7 @@
+safari_mc_test
+*.o
+*.swp
+*.cpp#
+*.cpp~
+out.txt
+out.txt~

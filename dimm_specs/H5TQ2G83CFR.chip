@@ -1,0 +1,9 @@
+#datasheet:https://www.skhynix.com/eolproducts.view.do?pronm=DDR3+SDRAM&srnm=H5TQ2G83CFR&rk=19&rc=computing
+tRFC,64,nCK
+tAA,15,ns
+tRCD,15,ns
+tRP,15,ns
+tRC,52.5,ns
+tRAS,37.5,ns
+tCL,6,nCK
+tCWL,5,nCK

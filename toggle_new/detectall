@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for filename in ./img_out/*.jpeg ; do
+  (./detect7segment $filename >> ./img_out/values.log)&
+done
+wait

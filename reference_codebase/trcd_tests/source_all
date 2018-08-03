@@ -1,0 +1,2 @@
+mkdir -p hynix_results/p2_1/
+./safari_mc_test hynixp2 0 hynix_results/p2_1/

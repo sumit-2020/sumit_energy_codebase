@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for i in {1..5}
+do
+  streamer -r 400 -f jpeg -s 1920x1080 -q -t 1 -o img_out/image_test_$i.jpeg > ./img_out/streamer.log
+  convert ./img_out/image_test_$i.jpeg -strokewidth 0 -fill "rgba(255,0,0,1)" -draw "circle 917,492 955,492" ./img_out/image_test_$i.jpeg
+  ssocr -d 6 -o ./img_out/out_test_$i.jpeg -t 95 crop 50 120 1850 450 g_threshold invert dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation dilation erosion erosion erosion erosion erosion erosion erosion erosion erosion erosion erosion erosion ./img_out/image_test_$i.jpeg
+done

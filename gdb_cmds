@@ -1,0 +1,1 @@
+run -t  $CURR_TEST -m  $TEMPERATURE  -d  $DIMM -e 2

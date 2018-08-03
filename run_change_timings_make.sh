@@ -1,0 +1,1 @@
+make TIMINGS="-DDEF_TRCD=6 -DDEF_TRP=5"
