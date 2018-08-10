@@ -43,7 +43,10 @@ class PowerTest: public Test {
 
     void sumitfcfs_loop();
     void sumitfrfcfs_loop();
+    void fcfs_init(int, uint8_t);
+    void frfcfs_init(int, uint8_t);
     void ahb_init(int, uint8_t);
+    void frfcfspriorhit_init(int, uint8_t);
     void sumitahb_loop();
     void sumitfrfcfspriorhit_loop();
 

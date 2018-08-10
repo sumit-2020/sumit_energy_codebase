@@ -51,8 +51,8 @@ int main(int argc, char *argv[]) {
     if (t_name == SUMITFCFS){
         cout << " for SUMITFCFS test..." << endl;
         PowerTest * init_test = new PowerTest(sandbox);
-        //init_test->turn_bus(BUSDIR::WRITE);
-        //init_test->idd4r_init(0,0x33);
+        init_test->turn_bus(BUSDIR::WRITE);
+        init_test->fcfs_init(0,0x33);
         init_test->turn_bus(BUSDIR::READ);
         init_test->send_commands();
         delete init_test;
@@ -60,8 +60,8 @@ int main(int argc, char *argv[]) {
     else if (t_name == SUMITFRFCFS){
         cout << " for SUMITFRFCFS test..." << endl;
         PowerTest * init_test = new PowerTest(sandbox);
-        //init_test->turn_bus(BUSDIR::WRITE);
-        //init_test->idd4r_init(0,0x33);
+        init_test->turn_bus(BUSDIR::WRITE);
+        init_test->frfcfs_init(0,0x33);
         init_test->turn_bus(BUSDIR::READ);
         init_test->send_commands();
         delete init_test;
@@ -78,8 +78,8 @@ int main(int argc, char *argv[]) {
     else if (t_name == SUMITFRFCFSPRIORHIT){
         cout << " for SUMITFRFCFSPRIORHIT test..." << endl;
         PowerTest * init_test = new PowerTest(sandbox);
-        //init_test->turn_bus(BUSDIR::WRITE);
-        //init_test->idd4r_init(0,0x33);
+        init_test->turn_bus(BUSDIR::WRITE);
+        init_test->frfcfspriorhit_init(0,0x33);
         init_test->turn_bus(BUSDIR::READ);
         init_test->send_commands();
         delete init_test;
