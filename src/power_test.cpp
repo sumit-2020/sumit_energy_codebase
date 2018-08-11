@@ -2,6 +2,130 @@
 
 using namespace std;
 
+void PowerTest::fcfs_init(int row, uint8_t pattern){
+    uint8_t pattern1 = 0xcc;
+    uint8_t pattern2 = 0x33;
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(1, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 0, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 0, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(1, 0, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(2, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(2, 0, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+}
+
+void PowerTest::frfcfs_init(int row, uint8_t pattern){
+    uint8_t pattern1 = 0xcc;
+    uint8_t pattern2 = 0x33;
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(0, 1, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 1, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 1, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 1, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(0, 2, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 2, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 2, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 2, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+}
+
+void PowerTest::ahb_init(int row, uint8_t pattern){
+    uint8_t pattern1 = 0xcc;
+    uint8_t pattern2 = 0x33;
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(0, 1, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 1, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 1, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 1, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(0, 2, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 2, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 2, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 2, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+}
+
+void PowerTest::frfcfspriorhit_init(int row, uint8_t pattern){
+    uint8_t pattern1 = 0xcc;
+    uint8_t pattern2 = 0x33;
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 0, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 0, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(0, 1, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 1, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 1, pattern2, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 1, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+        
+        this->cq->insert(genRowCMD(0, 2, MC_CMD::ACT));
+        this->cq->insert(genWaitCMD(DEF_TRCD-1));
+        this->cq->insert(genWriteCMD(0, 2, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genWriteCMD(0, 2, pattern1, AUTO_PRECHARGE::NO_AP));
+        this->cq->insert(genWaitCMD(DEF_TCL + DEF_TBURST));
+        this->cq->insert(genRowCMD(0, 2, MC_CMD::PRE));
+        this->cq->insert(genWaitCMD(DEF_TRP-1));
+}
+
 ////////////////////////////////////////////////////////////////////////////
 // IDD Tests
 ////////////////////////////////////////////////////////////////////////////
@@ -80,8 +204,6 @@ void PowerTest::idd4r_init(int row, uint8_t pattern){
         delete da;
     }
 }
-
-void PowerTest::ahb_init(int row, uint8_t pattern){}
 
 void PowerTest::idd4r_loop(int row)
 {
@@ -501,5860 +623,5852 @@ void PowerTest::idd8_loop(){
 
 void PowerTest::sumitfcfs_loop(){
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (4));
+this->cq->insert(genWaitCMD (3));
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (20));
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (8));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (5));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (4));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
+this->cq->insert(genWaitCMD (4));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (5));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (5));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (6));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::ALL));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 }
 
 void PowerTest::sumitfrfcfs_loop(){
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (20));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (2));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (4));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::ALL));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 }
 
 void PowerTest::sumitahb_loop(){
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (4));
+this->cq->insert(genWaitCMD (3));
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (20));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (2));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (2));
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (3));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::ALL));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 }
 
 void PowerTest::sumitfrfcfspriorhit_loop(){
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (4));
+this->cq->insert(genWaitCMD (3));
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (20));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+this->cq->insert(genWaitCMD (2));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
+this->cq->insert(genWaitCMD (3));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
+this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
+
+this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (2));
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
+this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
+
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+
 this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
+
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
+this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
+
+this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
+
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
 this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
 this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
 this->cq->insert(genWaitCMD (1));
 this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
+this->cq->insert(genWaitCMD (3));
 this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (0, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (0, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (1, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (2, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (2, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (3, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (3, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (4, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (5, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (5, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 0, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 1, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 0, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 2, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genReadCMD (0, 1, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (1));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::PRE, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 3, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 2, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genRowCMD  (6, 4, MC_CMD::ACT, PRECHARGE::SINGLE));
-this->cq->insert(genWaitCMD (2));
-this->cq->insert(genReadCMD (0, 3, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (4));
-this->cq->insert(genReadCMD (0, 4, AUTO_PRECHARGE::NO_AP));
-this->cq->insert(genWaitCMD (9));
+this->cq->insert(genWaitCMD (8));
 this->cq->insert(genRowCMD  (5, 4, MC_CMD::PRE, PRECHARGE::ALL));
-this->cq->insert(genWaitCMD (6));
+this->cq->insert(genWaitCMD (5));
 }
